@@ -40,8 +40,15 @@ void PID_control() {
   D = error - lastError;
   lastError = error;
   //int motorspeed = P*Kp + I*Ki 
-  int motorspeed = P*Kp + D*Kd; ;
-  
+  int motorspeed = P*Kp + D*Kd; 
+  Serial.print("Position:");
+  Serial.print(position);
+  Serial.print("P:");
+  Serial.print(P);
+  Serial.print("I:");
+  Serial.print(I);
+  Serial.print("D:");
+  Serial.println(D);
   int motorspeeda = basespeeda + motorspeed;
   int motorspeedb = basespeedb - motorspeed;
   
@@ -81,8 +88,7 @@ void setup() {
 
 
 void loop() {
-    Serial.print("WORKING");
     PID_control();
-    forward_brake(0,0);
+   
   
 }
